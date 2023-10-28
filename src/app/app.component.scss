@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+  }
+  
+.main{
+    max-width: 1284px;
+    margin: 0 auto;
+
+}
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .th.mat-header-cell::ng-deep{
+    text-align: center;
+  }

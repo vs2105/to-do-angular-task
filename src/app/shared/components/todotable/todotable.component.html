@@ -1,0 +1,66 @@
+<mat-card class="example-card">
+    <!-- <mat-card-header>
+        <mat-card-title>To Do</mat-card-title>
+    </mat-card-header> -->
+    <mat-card-content>
+        <form [formGroup]="TodoForm" (ngSubmit)="todoformsubmit()">
+            <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Title</mat-label>
+                    <input type="text" matInput formControlName="title">
+                </mat-form-field>
+            </div>
+            <div >
+            
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>ASSIGNED DATE</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="assigenddate" [min]="TodayDate" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle  [for]="picker" matSuffix>
+                      <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker ></mat-datepicker>
+                  </mat-form-field>
+             </div>
+             <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>DUE DATE</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="duedate" [min]="TodoForm.controls['assigenddate'].value" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle  [for]="picker1" matSuffix>
+                      <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+             </div>
+             <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                   
+                     <mat-select formControlName="status">
+                        <mat-option value="active">
+                          Active
+                          </mat-option>
+                          <mat-option value="close">
+                            Close
+                            </mat-option>
+                            <mat-option value="archive">
+                                Archive
+                                </mat-option>
+                     </mat-select>
+                    
+                  </mat-form-field>
+             </div>
+             <div>
+                    <input   formControlName="file" type="file" (change)="onfilechange($event)" accept=".jpg, .png"> 
+             </div>
+             <div class="margin">
+                <button mat-raised-button color="primary" type="submit" class="margin1" *ngIf="!obj">Save todo</button>
+                <button type="button" *ngIf="obj" color="primary" mat-raised-button class="mx-2" (click)="onUpate()">Update</button>
+                <button mat-raised-button color="warn" mat-dialog-close>close</button>
+             </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+
